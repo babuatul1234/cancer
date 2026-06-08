@@ -69,8 +69,8 @@ if st.button("Predict"):
 
     input_data = pd.DataFrame([row], columns=features)
 
-    st.write("Model expects:")
-    st.write(features)
+    #st.write("Model expects:")
+    #st.write(features)
 
     prediction = model.predict(input_data)
 
