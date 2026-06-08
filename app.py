@@ -1,8 +1,9 @@
+```python
 import streamlit as st
-import joblib
 import pandas as pd
+import joblib
 
-# Load trained model
+# Load model
 model = joblib.load("Cancer_pred.pkl")
 
 st.set_page_config(
@@ -11,9 +12,12 @@ st.set_page_config(
 )
 
 st.title("🫁 Lung Cancer Prediction System")
-st.write("Enter patient details and click Predict.")
+st.write("Enter patient details and click Predict")
 
-# User Inputs
+# Get feature names from trained model
+features = list(model.feature_names_in_)
+
+# User inputs
 gender = st.selectbox("Gender", ["Male", "Female"])
 age = st.number_input("Age", min_value=1, max_value=120, value=30)
 
@@ -31,48 +35,42 @@ shortness_of_breath = st.selectbox("Shortness of Breath", [1, 2])
 swallowing_difficulty = st.selectbox("Swallowing Difficulty", [1, 2])
 chest_pain = st.selectbox("Chest Pain", [1, 2])
 
-# Gender Encoding
-gender = 1 if gender == "Male" else 0
+# IMPORTANT:
+# Change this if LabelEncoder encoded differently
+gender_encoded = 1 if gender == "Male" else 0
 
 if st.button("Predict"):
 
-    input_data = pd.DataFrame([[
+    values = {
+        "GENDER": gender_encoded,
+        "AGE": age,
+        "SMOKING": smoking,
+        "YELLOW_FINGERS": yellow_fingers,
+        "ANXIETY": anxiety,
+        "PEER_PRESSURE": peer_pressure,
+        "CHRONIC DISEASE": chronic_disease,
+        "CHRONIC_DISEASE": chronic_disease,
+        "FATIGUE": fatigue,
+        "ALLERGY": allergy,
+        "WHEEZING": wheezing,
+        "ALCOHOL CONSUMING": alcohol_consuming,
+        "ALCOHOL_CONSUMING": alcohol_consuming,
+        "COUGHING": coughing,
+        "SHORTNESS OF BREATH": shortness_of_breath,
+        "SHORTNESS_OF_BREATH": shortness_of_breath,
+        "SWALLOWING DIFFICULTY": swallowing_difficulty,
+        "SWALLOWING_DIFFICULTY": swallowing_difficulty,
+        "CHEST PAIN": chest_pain,
+        "CHEST_PAIN": chest_pain
+    }
 
-        gender,
-        age,
-        smoking,
-        yellow_fingers,
-        anxiety,
-        peer_pressure,
-        chronic_disease,
-        fatigue,
-        allergy,
-        wheezing,
-        alcohol_consuming,
-        coughing,
-        shortness_of_breath,
-        swallowing_difficulty,
-        chest_pain
+    # Build row dynamically using model feature names
+    row = [values[col] for col in features]
 
-    ]], columns=[
+    input_data = pd.DataFrame([row], columns=features)
 
-        'GENDER',
-        'AGE',
-        'SMOKING',
-        'YELLOW_FINGERS',
-        'ANXIETY',
-        'PEER_PRESSURE',
-        'CHRONIC DISEASE',
-        'FATIGUE',
-        'ALLERGY',
-        'WHEEZING',
-        'ALCOHOL CONSUMING',
-        'COUGHING',
-        'SHORTNESS OF BREATH',
-        'SWALLOWING DIFFICULTY',
-        'CHEST PAIN'
-
-    ])
+    st.write("Model expects:")
+    st.write(features)
 
     prediction = model.predict(input_data)
 
@@ -80,3 +78,4 @@ if st.button("Predict"):
         st.error("⚠️ Lung Cancer Detected")
     else:
         st.success("✅ No Lung Cancer Detected")
+```
