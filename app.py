@@ -1,4 +1,4 @@
-```python
+
 import streamlit as st
 import pandas as pd
 import joblib
@@ -78,4 +78,4 @@ if st.button("Predict"):
         st.error("⚠️ Lung Cancer Detected")
     else:
         st.success("✅ No Lung Cancer Detected")
-```
+
