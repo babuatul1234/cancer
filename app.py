@@ -35,6 +35,23 @@ shortness_of_breath = st.selectbox("Shortness of Breath", [1, 2])
 swallowing_difficulty = st.selectbox("Swallowing Difficulty", [1, 2])
 chest_pain = st.selectbox("Chest Pain", [1, 2])
 
+def yes_no(label):
+    return 2 if st.selectbox(label, ["No", "Yes"]) == "Yes" else 1
+
+smoking = yes_no("Smoking")
+yellow_fingers = yes_no("Yellow Fingers")
+anxiety = yes_no("Anxiety")
+peer_pressure = yes_no("Peer Pressure")
+chronic_disease = yes_no("Chronic Disease")
+fatigue = yes_no("Fatigue")
+allergy = yes_no("Allergy")
+wheezing = yes_no("Wheezing")
+alcohol_consuming = yes_no("Alcohol Consuming")
+coughing = yes_no("Coughing")
+shortness_of_breath = yes_no("Shortness of Breath")
+swallowing_difficulty = yes_no("Swallowing Difficulty")
+chest_pain = yes_no("Chest Pain")
+
 # IMPORTANT:
 # Change this if LabelEncoder encoded differently
 gender_encoded = 1 if gender == "Male" else 0
