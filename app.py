@@ -35,6 +35,21 @@ shortness_of_breath = st.selectbox("Shortness of Breath", [1, 2])
 swallowing_difficulty = st.selectbox("Swallowing Difficulty", [1, 2])
 chest_pain = st.selectbox("Chest Pain", [1, 2])
 
+# Convert to model values
+smoking = 2 if smoking == "Yes" else 1
+yellow_fingers = 2 if yellow_fingers == "Yes" else 1
+anxiety = 2 if anxiety == "Yes" else 1
+peer_pressure = 2 if peer_pressure == "Yes" else 1
+chronic_disease = 2 if chronic_disease == "Yes" else 1
+fatigue = 2 if fatigue == "Yes" else 1
+allergy = 2 if allergy == "Yes" else 1
+wheezing = 2 if wheezing == "Yes" else 1
+alcohol_consuming = 2 if alcohol_consuming == "Yes" else 1
+coughing = 2 if coughing == "Yes" else 1
+shortness_of_breath = 2 if shortness_of_breath == "Yes" else 1
+swallowing_difficulty = 2 if swallowing_difficulty == "Yes" else 1
+chest_pain = 2 if chest_pain == "Yes" else 1
+
 # IMPORTANT:
 # Change this if LabelEncoder encoded differently
 gender_encoded = 1 if gender == "Male" else 0
