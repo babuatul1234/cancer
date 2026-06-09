@@ -17,65 +17,28 @@ st.write("Enter patient details and click Predict")
 # Get feature names from trained model
 features = list(model.feature_names_in_)
 
-# User inputs
-#gender = st.selectbox("Gender", ["Male", "Female"])
-#age = st.number_input("Age", min_value=1, max_value=120, value=30)
-
-
-#def yes_no(label):
-    #return 2 if st.selectbox(label, ["No", "Yes"]) == "Yes" else 1
-
-#smoking = yes_no("Smoking")
-#yellow_fingers = yes_no("Yellow Fingers (Yellow Stains on Fingers)")
-#anxiety = yes_no("Anxiety")
-#peer_pressure = yes_no("Peer Pressure (Friends Encourage Smoking)")
-#chronic_disease = yes_no("Chronic Disease")
-#fatigue = yes_no("Fatigue")
-#allergy = yes_no("Allergy")
-#wheezing = yes_no("Wheezing (Whistling Sound While Breathing)")
-#alcohol_consuming = yes_no("Alcohol Consuming")
-#coughing = yes_no("Coughing")
-#shortness_of_breath = yes_no("Shortness of Breath")
-#swallowing_difficulty = yes_no("Swallowing Difficulty")
-#chest_pain = yes_no("Chest Pain")
-
-st.subheader("👤 Patient Information")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    gender = st.selectbox("Gender", ["Male", "Female"])
-
-with col2:
-    age = st.number_input("Age", min_value=1, max_value=120, value=30)
-
-gender = 1 if gender == "Male" else 0
+ #User inputs
+gender = st.selectbox("Gender", ["Male", "Female"])
+age = st.number_input("Age", min_value=1, max_value=120, value=30)
 
 
 def yes_no(label):
-    return 1 if st.selectbox(label, ["No", "Yes"]) == "Yes" else 0
+    return 2 if st.selectbox(label, ["No", "Yes"]) == "Yes" else 1
 
+smoking = yes_no("Smoking")
+yellow_fingers = yes_no("Yellow Fingers (Yellow Stains on Fingers)")
+anxiety = yes_no("Anxiety")
+peer_pressure = yes_no("Peer Pressure (Friends Encourage Smoking)")
+chronic_disease = yes_no("Chronic Disease")
+fatigue = yes_no("Fatigue")
+allergy = yes_no("Allergy")
+wheezing = yes_no("Wheezing (Whistling Sound While Breathing)")
+alcohol_consuming = yes_no("Alcohol Consuming")
+coughing = yes_no("Coughing")
+shortness_of_breath = yes_no("Shortness of Breath")
+swallowing_difficulty = yes_no("Swallowing Difficulty")
+chest_pain = yes_no("Chest Pain")
 
-st.subheader("🩺 Symptoms & Lifestyle")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    smoking = yes_no("Smoking")
-    yellow_fingers = yes_no("Yellow Fingers")
-    anxiety = yes_no("Anxiety")
-    peer_pressure = yes_no("Peer Pressure")
-    chronic_disease = yes_no("Chronic Disease")
-    fatigue = yes_no("Fatigue")
-    allergy = yes_no("Allergy")
-
-with col2:
-    wheezing = yes_no("Wheezing")
-    alcohol_consuming = yes_no("Alcohol Consumption")
-    coughing = yes_no("Coughing")
-    shortness_of_breath = yes_no("Shortness of Breath")
-    swallowing_difficulty = yes_no("Swallowing Difficulty")
-    chest_pain = yes_no("Chest Pain")
 
 # IMPORTANT:
 # Change this if LabelEncoder encoded differently
