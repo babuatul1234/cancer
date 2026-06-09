@@ -26,13 +26,13 @@ def yes_no(label):
     return 2 if st.selectbox(label, ["No", "Yes"]) == "Yes" else 1
 
 smoking = yes_no("Smoking")
-yellow_fingers = yes_no("Yellow Fingers(Yellow Stains on Fingers)")
+yellow_fingers = yes_no("Yellow Fingers (Yellow Stains on Fingers)")
 anxiety = yes_no("Anxiety")
-peer_pressure = yes_no("Peer Pressure")
+peer_pressure = yes_no("Peer Pressure (Friends Encourage Smoking)")
 chronic_disease = yes_no("Chronic Disease")
 fatigue = yes_no("Fatigue")
 allergy = yes_no("Allergy")
-wheezing = yes_no("Wheezing")
+wheezing = yes_no("Wheezing (Whistling Sound While Breathing)")
 alcohol_consuming = yes_no("Alcohol Consuming")
 coughing = yes_no("Coughing")
 shortness_of_breath = yes_no("Shortness of Breath")
